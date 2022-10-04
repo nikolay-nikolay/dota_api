@@ -1,4 +1,4 @@
-# dota_api
+# vue-project
 
 ## Project setup
 ```
