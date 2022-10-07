@@ -1,149 +1,139 @@
 
 <template lang="">
 
-<!-- <div>
-  <p>Name</p>
-  <p>Pro winrate</p>
+<navheroes></navheroes>
+
+<div class="stats-title background">
+  <p class="title-hero background">HERO</p>
+  <p class="title-pick background">PRO PICK</p>
+  <p class="title-ban background">PRO BAN</p>
+  <p class="title-winrate background">PRO WINRATE</p>
 </div>
 
-
-<tr v-for="id in heroId" class="stats" >
-  {{id}}
-  <td v-for="img in heroesImage" class="stats-icon">
-    <img :src="img" alt="icons">
-  </td>
-  <td class="stats-name">
-    {{name}}
-</td>
-  <td class="stats-winrate">
-    {{proWinrate}}
-  </td>
-</tr> -->
-
-
-<!-- СНИЗУ РАБОТАЕТ СТОЛБИКОМ НО ЭТО НЕ УДОБНО СТИЛИЗОВАТЬ, ХОЧУ ВЫВОДИТЬ СТРОЧНО КАК ТУТ https://www.opendota.com/heroes -->
-<div class="wrapper">
-  <div class="title">
-    <div class="name">Name</div>
-    <div class="winrate">ProWinrate %</div>
-  </div>
-
-  <div class="stats">
-
-    <div class="heroes-wrap">
-      <div v-for="post in heroesImage" class="icons-wrapper">
-      <img :src="post" alt="icons" class="icons">
-      </div>
+<div class="stats-wrapper">
+  <div class="stats" v-for="item in stats" :key="item.id">
+    <img :src="item.icon" alt="icon" class="icon">
+    <div class="stats-name">
+      {{item.name}}
     </div>
-
-      
-
-    <div class="heroes-wrap">
-      <div v-for="post in name" class="heroes">
-      <p class="heroes-text">{{  post  }}</p>
-      
+    <div class="stats-pick">
+      <p>{{item.pick_pro}}</p>
     </div>
-        
-  </div>
-
-  <div class="heroes-wrap">
+    <div class="stats-ban">
+      <p>{{item.ban_pro}}</p>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_pro}} %</p>
+      <progress class="progress" :value="item.winrate_pro" max="100"></progress>
+    </div>
+    <!-- <div class="stats-winrate">
+      <p>{{item.winrate_1}} %</p>
+      <progress class="progress" :value="item.winrate_1" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_2}} %</p>
+      <progress class="progress" :value="item.winrate_2" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_3}} %</p>
+      <progress class="progress" :value="item.winrate_3" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_4}} %</p>
+      <progress class="progress" :value="item.winrate_4" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_5}} %</p>
+      <progress class="progress" :value="item.winrate_5" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_6}} %</p>
+      <progress class="progress" :value="item.winrate_6" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_7}} %</p>
+      <progress class="progress" :value="item.winrate_7" max="100"></progress>
+    </div>
+    <div class="stats-winrate">
+      <p>{{item.winrate_8}} %</p>
+      <progress class="progress" :value="item.winrate_8" max="100"></progress>
+    </div> -->
     
-    <div v-for="post in proWinrate" class="stats-wrap">
-      <p class="stats-text">{{  post  }}</p>
-      <progress class="progress" :value="post" max="100"></progress>
-    </div>
   </div>
-    </div>
 </div>
-   
 
 </template>
 <script>
+import navheroes from '@/components/NavHeroes'
 import {useHeroes} from "@/hooks/useHeroes";
-import {ref} from 'vue'
 export default {
- 
-
-  setup(props){
-    const {name, proWinrate,heroesImage,heroId,} = useHeroes();
-    
+  components: {
+    navheroes
+  },
+  setup(){
+    const {stats} = useHeroes();
     return {
-      name,
-      proWinrate,
-      heroesImage,
-      heroId,
-    
-      
+      stats,
     }
-    
   }
 }
 </script>
 <style scoped>
-
-/* .stats{
+.stats-title{
   display: flex;
-}
-.stats-icon{
-  border: 1px solid teal;
-  padding: 10px;
-}
-.stats-name{
-  border: 1px solid teal;
-  padding: 10px;
-}
-.stats-winrate{
-  border: 1px solid teal;
-  padding: 10px;
-} */
-
-
-
-
-
-.heroes-wrap{
-  border-collapse: collapse;
-}
-.heroes{
-  height: 40px;
-  
-}
-.stats-wrap{
-  height: 40px;
-}
-.heroes-text{
   text-align: center;
-  vertical-align: middle;
-  line-height: 40px;
-  border-collapse: collapse; 
   
+  margin-top: 20px;
+  padding: 12px 0;
+}
+.background{
+  background: #313347;
+}
+.title-hero{
+  width: 400px;
   
-}
-.line{
-  width: 100%;
-  height: 1px;
-  color: aquamarine;
-  background-color: teal;
-}
-.icons-wrapper{
-  height: 40px;
-  width: 40px;
-}
-.stats-text{
-  padding-top: 12px;
-  text-align: center;
-  line-height: 10px;
-  border-collapse: collapse;
-  
-
 }
 .stats{
   display: flex;
-  
+  align-items: center;
+  border: 1px solid rgb(56, 56, 75);
+  margin-bottom: 10px;
 }
-.icons{
-  width: 100%;
-  height: 100%;
+.stats-name{
+  border: none;
+  width: 350px;
+  margin-left: 10px;
+}
+p{
+  text-align: center;
+}
+.title-pick{
+  width: 300px;
+}
+.stats-pick{
+  width: 300px;
+}
+
+.title-ban{
+  width: 300px;
+}
+.stats-ban{
+  width: 300px;
+}
+.title-winrate{
+  width: 300px;
+}
+.stats-winrate{
+  width: 300px;
+}
+.progress{
+  margin-bottom: 6px;
+  width: 100px;
+  margin-left: 100px;  
+}
+.icon{
+  width: 40px;
+  height: auto;
 }
 .progress {
   background-color: #f3f3f3;
@@ -152,5 +142,4 @@ export default {
   height: 6px;
   border-radius: 9px;
 }
-
 </style>

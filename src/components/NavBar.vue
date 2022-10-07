@@ -3,7 +3,7 @@
     <div @click="$router.push('/')" class="logo">DotaAPI</div>
     <div class="navbar__btns">
     <span class="line"></span>
-      <my-nav  @click="$router.push('/heroes')">Heroes</my-nav> <span class="line"></span>
+      <my-nav  @click="$router.push('/heroes/pro')">Heroes</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/teams')">Teams</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/players')">Players</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/matches')">Matches</my-nav> <span class="line"></span>
@@ -40,7 +40,7 @@ export default {
 .navbar__btns {
   align-items: center;
   display: flex;
-  margin-left: 93px;
+  margin-left: 100px;
 }
 .navbar__btns:hover{
     
