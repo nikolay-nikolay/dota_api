@@ -12,12 +12,17 @@
         </div>
         <div class="stats-pick">
             <div>
-                {{item.pick_turbo}}
+                {{(item.pick_turbo / totalPickTurbo * 1000).toFixed(2)}}
+            </div>
+            <div class="bar">
+                <div class="bar-process" :style="{width: (item.pick_turbo / totalPickTurbo * 1000).toFixed(2) + '%'}"></div>
             </div>
         </div> 
         <div class="stats-pick">
             <p> {{item.winrate_turbo}} % </p>
-            <progress class="progress" :value="item.winrate_turbo" max="100"></progress>
+            <div class="bar">
+                <div class="bar-process" :style="{width: item.winrate_turbo + '%'}"></div>
+            </div>
         </div> 
     </div>
 </template>
@@ -29,14 +34,27 @@ export default {
         navheroes
     },
     setup(){
-        const {stats} = useHeroes();
+        const {stats,totalPickTurbo} = useHeroes();
         return {
             stats,
+            totalPickTurbo,
         }
     }
 }
 </script>
 <style scoped>
+.bar{
+  width: 120px;
+  border: 1px solid black;
+  background: #313347;
+  height: 10px;
+  /* margin-left: 90px; */
+}
+.bar-process{
+  /* width: 20%; */
+  height: 100%;
+  background-color: rgb(106, 200, 12);
+}
 .stats-title{
   display: flex;
   text-align: center;

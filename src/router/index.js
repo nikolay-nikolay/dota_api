@@ -9,6 +9,7 @@ import Teams from '@/views/Teams'
 import Forums from '@/views/Forums'
 import HeroesPublick from '@/components/HeroesPublick'
 import HeroesTurbo from '@/components/HeroesTurbo'
+import MatchesPublick from '@/components/MatchesPublick'
 
 
 
@@ -26,8 +27,12 @@ const routes = [
         component: Heroes
     },
     {
-        path: '/matches',
+        path: '/matches/pro',
         component: Matches
+    },
+    {
+        path: '/matches/publick',
+        component: MatchesPublick
     },
     {
         path: '/rankings',

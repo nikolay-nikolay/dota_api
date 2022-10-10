@@ -4,9 +4,9 @@
     <div class="navbar__btns">
     <span class="line"></span>
       <my-nav  @click="$router.push('/heroes/pro')">Heroes</my-nav> <span class="line"></span>
+      <my-nav  @click="$router.push('/matches/pro')">Matches</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/teams')">Teams</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/players')">Players</my-nav> <span class="line"></span>
-      <my-nav  @click="$router.push('/matches')">Matches</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/rankings')">Rankings</my-nav> <span class="line"></span>
       <my-nav  @click="$router.push('/forums')">Forums</my-nav> <span class="line"></span>
     </div>

@@ -18,30 +18,45 @@
                 {{item.name}}
             </div>
             <div class="stats-pick">
-                <div>{{item.pick_crusarder}}</div>
+              <p>{{(item.pick_crusarder / totalPickCrusarder * 1000).toFixed(2)}} %</p>
+                <div class="bar">
+                  <div class="bar-process" :style="{width: (item.pick_crusarder / totalPickCrusarder * 1000).toFixed(2) + '%'}"></div>
+                </div>
             </div> 
             <div class="stats-pick">
                 <div>
                     <p> {{item.winrate_crusarder}} % </p>
-                    <progress class="progress" :value="item.winrate_crusarder" max="100"></progress>
+                    <div class="bar">
+                      <div class="bar-process" :style="{width: item.winrate_crusarder + '%'}"></div>
+                    </div>
                 </div>
             </div> 
             <div class="stats-pick">
-                <div>{{item.pick_legends}}</div>
+                <div>{{(item.pick_legends / totalPickLegends * 1000).toFixed(2)}} %</div>
+                <div class="bar">
+                  <div class="bar-process" :style="{width: (item.pick_legends / totalPickLegends * 1000).toFixed(2) + '%'}"></div>
+                </div>
             </div> 
             <div class="stats-pick">
                 <div>
                     <p> {{item.winrate_legends}} % </p>
-                    <progress class="progress" :value="item.winrate_legends" max="100"></progress>
+                    <div class="bar">
+                      <div class="bar-process" :style="{width: item.winrate_legends + '%'}"></div>
+                    </div>
                 </div>
             </div> 
             <div class="stats-pick">
-                <div>{{item.pick_immortal}}</div>
+                <div>{{(item.pick_immortal / totalPickImmortals * 1000).toFixed(2)}}</div>
+                <div class="bar">
+                  <div class="bar-process" :style="{width: (item.pick_immortal / totalPickImmortals * 1000).toFixed(2) + '%'}"></div>
+                </div>
             </div> 
             <div class="stats-pick">
                 <div>
-                    <p> {{item.winrate_immortal}} % </p>
-                    <progress class="progress" :value="item.winrate_immortal" max="100"></progress>
+                    <p> {{(item.winrate_immortal)}} % </p>
+                    <div class="bar">
+                      <div class="bar-process" :style="{width: item.winrate_immortal + '%'}"></div>
+                    </div>
                 </div>
             </div> 
             
@@ -58,14 +73,29 @@ export default {
         navheroes
     },
     setup(){
-    const {stats} = useHeroes();
+    const {stats,totalPickCrusarder,totalPickLegends,totalPickImmortals,} = useHeroes();
     return {
       stats,
+      totalPickCrusarder,
+      totalPickLegends,
+      totalPickImmortals,
     }
     }
 }
 </script>
 <style scoped>
+.bar{
+  width: 120px;
+  border: 1px solid black;
+  background: #313347;
+  height: 10px;
+  /* margin-left: 90px; */
+}
+.bar-process{
+  /* width: 20%; */
+  height: 100%;
+  background-color: rgb(106, 200, 12);
+}
     .stats-title{
   display: flex;
   text-align: center;
