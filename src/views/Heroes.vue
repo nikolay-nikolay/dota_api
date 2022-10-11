@@ -3,7 +3,7 @@
 <navheroes></navheroes>
 
 <div class="stats-title background">
-  <button  class="title-hero background">HERO</button>
+  <p  class="title-hero background">HERO</p>
   <p class="title-pick background">PRO PICK</p>
   <p class="title-ban background">PRO BAN</p>
   <p class="title-winrate background">PRO WINRATE</p>
@@ -64,6 +64,11 @@ export default {
       totalBanPro,
     }
   },
+  computed: {
+    sortedName(){
+      return [...this.stats].sort((a, b) => a.stats.name.localeCompare(b.stats.name));
+    }
+  }
  
 }
 </script>

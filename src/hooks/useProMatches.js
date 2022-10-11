@@ -11,7 +11,7 @@ export function useProMatches() {
           
           for (let i = 0; i < data.length; i++){
             matches.push({
-              id: data[i].match_id,
+              id: data[i].match_id ,
               duration: data[i].duration,
               radiant_name: data[i].radiant_name,
               dire_name: data[i].dire_name,

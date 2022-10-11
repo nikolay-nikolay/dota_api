@@ -31,8 +31,9 @@ export function useHeroes() {
               winrate_legends: parseInt(  (data[i]['4_win'] + data[i]['5_win'] ) / (data[i]['4_pick'] + data[i]['5_pick']) * 100 *10 ) / 10,
               winrate_immortal: parseInt(  (data[i]['6_win'] + data[i]['7_win'] + data[i]['8_win']) / (data[i]['6_pick'] + data[i]['7_pick'] + data[i]['8_pick']) * 100 *10 ) / 10,
               winrate_turbo: parseInt(data[i].turbo_wins / data[i].turbo_picks * 100 * 10) / 10,
-              
+                  
             })
+            
           }
           
             stats.forEach(element => {
@@ -43,7 +44,8 @@ export function useHeroes() {
               totalPickImmortals.value += element.pick_immortal
               totalPickTurbo.value += element.pick_turbo
             });
-
+            
+            
             
       
         } catch (e) {

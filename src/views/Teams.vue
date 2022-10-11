@@ -10,7 +10,7 @@
 
 
     <div class="teams-wrapper">
-        <div class="teams" v-for="item in teams" :key="item.id">
+        <div class="teams" v-for="item in teams.slice(0,100)" :key="item.id">
           <div class="teams-rank">
             <p>1st</p>
           </div>
