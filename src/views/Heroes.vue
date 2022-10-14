@@ -3,10 +3,10 @@
 <navheroes></navheroes>
 
 <div class="stats-title background">
-  <p @click="sortedPost" class="title-hero background">HERO</p>
-  <p class="title-pick background">PRO PICK</p>
-  <p class="title-ban background">PRO BAN</p>
-  <p class="title-winrate background">PRO WINRATE</p>
+  <p @click="sortItems($event, (a, b) => a.name.localeCompare(b.name))" class="title-hero background">HERO</p>
+  <p @click="sortItems($event, (a, b) => (a.pick_pro / totalPickPro * 1000) - (b.pick_pro / totalPickPro * 1000))" class="title-pick background">PRO PICK</p>
+  <p @click="sortItems($event, (a, b) => (a.ban_pro / totalBanPro * 1000) - (b.ban_pro / totalBanPro * 1000))" class="title-ban background">PRO BAN</p>
+  <p @click="sortItems($event, (a, b) => a.winrate_pro - b.winrate_pro)" class="title-winrate background">PRO WINRATE</p>
 </div>
 <!-- <p>{{totalBanPro}}</p> -->
 <div class="stats-wrapper">
@@ -67,21 +67,15 @@ export default {
     }
   },
   methods: {
-    sortedPost()  {
-        console.log(this.stats)
-        return [...this.stats].sort((a, b) => a.name?.localeCompare(b.name))
+    sortItems(event, callback) {
+        let element = event.srcElement
+        let isASC = element.id === 'asc'
+
+        element.id = isASC ? 'desc' : 'asc'
+        this.stats.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
     },
-    even(){
-      // this.sortKey = item
-      // this.item.name = this.item.name * -1
-    }
   }
-  // computed: {
-  //   sortedName(){
-  //     return [...this.stats].sort((a, b) => a.name.localeCompare(b.name));
-  //   },
-  //   }
-  
+
  
 }
 </script>

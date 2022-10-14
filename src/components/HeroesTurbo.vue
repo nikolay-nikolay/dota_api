@@ -1,9 +1,9 @@
 <template>
     <navheroes></navheroes>
     <div class="stats-title background">
-        <p class="title-hero background">HERO</p>
-        <p class="title-pick background">TURBO PICK %</p>
-        <p class="title-win background">TURBO WINRATE %</p>
+        <p @click="sortItems($event, (a, b) => a.name.localeCompare(b.name))" class="title-hero background">HERO</p>
+        <p @click="sortItems($event, (a, b) => (a.pick_turbo / totalPickTurbo * 1000) - (b.pick_turbo / totalPickTurbo * 1000))" class="title-pick background">TURBO PICK %</p>
+        <p @click="sortItems($event, (a, b) => (a.winrate_turbo) - (b.winrate_turbo))" class="title-win background">TURBO WINRATE %</p>
     </div>
     <div class="stats" v-for="item in stats" :key="item.id">
         <img :src="item.icon" alt="icon" class="icon">
@@ -39,7 +39,15 @@ export default {
             stats,
             totalPickTurbo,
         }
-    }
+    },
+    methods: {
+      sortItems(event, callback) {
+        let element = event.srcElement
+        let isASC = element.id === 'asc'
+
+        element.id = isASC ? 'desc' : 'asc'
+        this.stats.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
+    }},
 }
 </script>
 <style scoped>

@@ -2,10 +2,10 @@
     <navmatches></navmatches>
 
     <div class="match-title">
-        <p class="title-id">ID</p>
-        <p class="title-duration">DURATION</p>
-        <p class="title-radiant">RADIANT</p>
-        <p class="title-dire">DIRE</p>
+        <p @click="sortItems($event, (a, b) => a.league_name.localeCompare(b.league_name))" class="title-id">ID</p>
+        <p @click="sortItems($event, (a, b) => a.duration - b.duration)" class="title-duration">DURATION</p>
+        <p @click="sortItems($event, (a, b) => a.radiant_name.localeCompare(b.radiant_name))" class="title-radiant">RADIANT</p>
+        <p @click="sortItems($event, (a, b) => a.dire_name.localeCompare(b.dire_name))" class="title-dire">DIRE</p>
     </div>
 
     <div class="match-wrapper">
@@ -16,10 +16,10 @@
             </div>
             <div class="match-duration">
                 <!-- <p>{{item.duration[0]}} : {{item.duration[1].toISOString().substr(11, 8)}}</p> -->
-                <p>{{item.duration}}</p>
+                <p>{{getFormattedDuration(item.duration)}}</p>
             </div>
             <div class="match-radiant">
-                <p>{{item.radiant_name}}</p>
+                <p>{{item.radiant_name}}</p>    
             </div>
             <div class="match-dire">
                 <p>{{item.dire_name}}</p>
@@ -40,6 +40,21 @@ export default {
         return{
             matches,durationFormat
         }
+    },
+    methods: {
+        getFormattedDuration(seconds) {
+            let date = new Date(null)
+            date.setSeconds(seconds)
+
+            return date.toISOString().substr(11, 8)
+        },
+        sortItems(event, callback) {
+            let element = event.srcElement
+            let isASC = element.id === 'asc'
+
+            element.id = isASC ? 'desc' : 'asc'
+            this.matches.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
+        },
     }
     
 }

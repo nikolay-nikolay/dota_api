@@ -2,8 +2,8 @@
     <navmatches></navmatches>
 
     <div class="match-title">
-        <p class="title-id">ID</p>
-        <p class="title-duration">DURATION</p>
+        <p @click="sortItems($event, (a, b) => a.id - b.id)" class="title-id">ID</p>
+        <p @click="sortItems($event, (a, b) => a.duration - b.duration)" class="title-duration">DURATION</p>
         <p class="title-radiant">RADIANT</p>
         <p class="title-dire">DIRE</p>
     </div>
@@ -12,16 +12,15 @@
         <div class="match" v-for="item in matches" :key="item.id">
             <div class="match-id">
                 <p>{{item.id}}</p>
-                <p class="match-league">{{item.league_name}}</p>
             </div>
             <div class="match-duration">
-                <p >{{item.duration}}</p>
+                <p>{{getFormattedDuration(item.duration)}}</p>
             </div>
             <div class="match-radiant">
-                <p>{{item.radiant_name}}</p>
+                <p>{{item.radiant_team}}</p>
             </div>
             <div class="match-dire">
-                <p>{{item.dire_name}}</p>
+                <p>{{item.dire_team}}</p>
             </div>
 
         </div>
@@ -29,15 +28,61 @@
 </template>
 <script>
 import navmatches from '@/components/NavMatches.vue'
-import {useProMatches} from "@/hooks/useProMatches";
+import {usePublickMatches} from "@/hooks/usePublickMatches"
+import {ref} from 'vue'
 export default {
     components: {
         navmatches
     },
+    data(){
+        return {
+            takeId: []
+        }
+    },
     setup(){
-        const {matches,durationFormat} = useProMatches()
+        const {matches,durationFormat} = usePublickMatches()
         return{
             matches,durationFormat
+        }
+    },
+    methods: {
+        getFormattedDuration(seconds) {
+            let date = new Date(null)
+            date.setSeconds(seconds)
+
+            return date.toISOString().substr(11, 8)
+        },
+        sortItems(event, callback) {
+            let element = event.srcElement
+            let isASC = element.id === 'asc'
+
+            element.id = isASC ? 'desc' : 'asc'
+            this.matches.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
+        },
+        computed: {
+        async fetchingHeroes (){
+            try {
+                const api_url = "https://api.opendota.com/api/heroStats"
+                const response = await fetch(api_url)
+                const data = await response.json()
+
+                for (let t = 0; t < data.length; t++){
+                    takeId.push({
+                        heroId: data[i].hero_id,
+                        img: data[i].img,
+                    })
+                }
+                
+                if (this.matches.id == this.Heroid) {
+                    console.log(this.matches.id)
+                    callback(this)
+                
+                }
+            
+            } catch (e){
+                console.log(e)
+            }
+    }
         }
     }
     

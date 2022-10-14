@@ -1,13 +1,13 @@
 <template >
     <navheroes></navheroes>    
     <div class="stats-title background">
-        <p class="title-hero background">HERO</p>
-        <p class="title-pick background">CRU/GUARD/HER P%</p>
-        <p class="title-win background">CRU/GUARD/HER W%</p>
-        <p class="title-pick background">LEGEND/ARCHON P%</p>
-        <p class="title-win background">LEGEND/ARCHON W%</p>
-        <p class="title-pick background">IMMORTAL/DIV/ANC P%</p>
-        <p class="title-win background" style="margin-left:20px">IMMORTAL/DIV/ANC W%</p>
+        <p @click="sortItems($event, (a, b) => a.name.localeCompare(b.name))" class="title-hero background">HERO</p>
+        <p @click="sortItems($event, (a, b) => (a.pick_crusarder / totalPickCrusarder * 1000) - (b.pick_crusarder / totalPickCrusarder * 1000))" class="title-pick background">CRU/GUARD/HER P%</p>
+        <p @click="sortItems($event, (a, b) => (a.winrate_crusarder) - (b.winrate_crusarder))" class="title-win background">CRU/GUARD/HER W%</p>
+        <p @click="sortItems($event, (a, b) => (a.pick_legends / totalPickLegends * 1000) - (b.pick_legends / totalPickLegends * 1000))" class="title-pick background">LEGEND/ARCHON P%</p>
+        <p @click="sortItems($event, (a, b) => (a.winrate_legends) - (b.winrate_legends))"  class="title-win background">LEGEND/ARCHON W%</p>
+        <p @click="sortItems($event, (a, b) => (a.pick_immortal / totalPickImmortals * 1000) - (b.pick_immortal / totalPickImmortals * 1000))" class="title-pick background">IMMORTAL/DIV/ANC P%</p>
+        <p @click="sortItems($event, (a, b) => (a.winrate_immortal) - (b.winrate_immortal))" class="title-win background" style="margin-left:20px">IMMORTAL/DIV/ANC W%</p>
         <!-- <p class="title-winrate background">PRO WINRATE</p> -->
     </div>
 
@@ -79,8 +79,15 @@ export default {
       totalPickCrusarder,
       totalPickLegends,
       totalPickImmortals,
-    }
-    }
+    }},
+    methods: {
+      sortItems(event, callback) {
+        let element = event.srcElement
+        let isASC = element.id === 'asc'
+
+        element.id = isASC ? 'desc' : 'asc'
+        this.stats.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
+    }},
 }
 </script>
 <style scoped>

@@ -10,8 +10,7 @@ import Forums from '@/views/Forums'
 import HeroesPublick from '@/components/HeroesPublick'
 import HeroesTurbo from '@/components/HeroesTurbo'
 import MatchesPublick from '@/components/MatchesPublick'
-import app from '@/views/app'
-import grid from '@/views/Grid'
+
 
 
 const routes = [
@@ -55,14 +54,8 @@ const routes = [
         path: '/heroes/turbo',
         component: HeroesTurbo
     },
-    {
-        path: '/app',
-        component: app
-    }, 
-    {
-        path: '/grid',
-        component: grid
-    },
+   
+  
 
       
 

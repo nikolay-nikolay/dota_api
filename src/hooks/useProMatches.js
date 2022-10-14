@@ -1,5 +1,4 @@
 import {onMounted, reactive, ref} from 'vue';
-import moment from 'moment'
 export function useProMatches() {
   let matches = reactive([])
   let durationFormat = ref(0)
@@ -13,7 +12,8 @@ export function useProMatches() {
             matches.push({
               id: data[i].match_id ,
               // duration: (data[i].duration / 60).toString().split("."),
-              duration: moment.unix(data[i].duration).utc().format('H [h,] m [m:] s [s]'),
+            //   duration: moment.unix(data[i].duration).utc().format('H [h,] m [m:] s [s]'),
+              duration: data[i].duration,
               radiant_name: data[i].radiant_name,
               dire_name: data[i].dire_name,
               league_name: data[i].league_name,
