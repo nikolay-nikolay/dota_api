@@ -15,7 +15,8 @@
                 <p class="match-league">{{item.league_name}}</p>
             </div>
             <div class="match-duration">
-                <p >{{item.duration / 60}}</p>
+                <!-- <p>{{item.duration[0]}} : {{item.duration[1].toISOString().substr(11, 8)}}</p> -->
+                <p>{{item.duration}}</p>
             </div>
             <div class="match-radiant">
                 <p>{{item.radiant_name}}</p>

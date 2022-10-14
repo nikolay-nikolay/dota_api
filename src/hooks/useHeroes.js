@@ -17,6 +17,8 @@ export function useHeroes() {
           
           for (let i = 0; i < data.length; i++){
             stats.push({
+              title1 : 'heroes',
+              title2 : 'pick',
               id: data[i].id,
               icon: "https://api.opendota.com" + data[i].icon.slice(0, -1),
               name: data[i].localized_name,

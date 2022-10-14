@@ -3,14 +3,14 @@
 <navheroes></navheroes>
 
 <div class="stats-title background">
-  <p  class="title-hero background">HERO</p>
+  <p @click="sortedPost" class="title-hero background">HERO</p>
   <p class="title-pick background">PRO PICK</p>
   <p class="title-ban background">PRO BAN</p>
   <p class="title-winrate background">PRO WINRATE</p>
 </div>
 <!-- <p>{{totalBanPro}}</p> -->
 <div class="stats-wrapper">
-  <div  class="stats" v-for="item in stats" :key="item.id">
+  <div class="stats" v-for="item in stats" :key="item.id" >
     <img :src="item.icon" alt="icon" class="icon">
     <div 
     class="stats-name">
@@ -49,26 +49,39 @@ import {useHeroes} from "@/hooks/useHeroes";
 export default {
   data (){
     return {
-      list : []
+      sortedPosts: ''
     }
   },
   components: {
     navheroes
   },
   setup(){
+
     const {stats, totalPickPro, totalBanPro,} = useHeroes();
     return {
       // selectedSort, sortedPosts,
       stats,
       totalPickPro,
       totalBanPro,
+      
     }
   },
-  computed: {
-    sortedName(){
-      return [...this.stats].sort((a, b) => a.stats.name.localeCompare(b.stats.name));
+  methods: {
+    sortedPost()  {
+        console.log(this.stats)
+        return [...this.stats].sort((a, b) => a.name?.localeCompare(b.name))
+    },
+    even(){
+      // this.sortKey = item
+      // this.item.name = this.item.name * -1
     }
   }
+  // computed: {
+  //   sortedName(){
+  //     return [...this.stats].sort((a, b) => a.name.localeCompare(b.name));
+  //   },
+  //   }
+  
  
 }
 </script>
