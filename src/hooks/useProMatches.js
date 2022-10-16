@@ -14,8 +14,8 @@ export function useProMatches() {
               // duration: (data[i].duration / 60).toString().split("."),
             //   duration: moment.unix(data[i].duration).utc().format('H [h,] m [m:] s [s]'),
               duration: data[i].duration,
-              radiant_name: data[i].radiant_name,
-              dire_name: data[i].dire_name,
+              radiant_name: data[i].radiant_name || 'undefined',
+              dire_name: data[i].dire_name || 'undefined',
               league_name: data[i].league_name,
               radiant_win: data[i].radiant_win,
 

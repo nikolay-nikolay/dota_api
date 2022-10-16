@@ -38,6 +38,15 @@ export default {
         return{
             teams,
         }
+    },
+    methods: {
+        sortItems(event, callback) {
+            let element = event.srcElement
+            let isASC = element.id === 'asc'
+
+            element.id = isASC ? 'desc' : 'asc'
+            this.teams.slice(0,100).sort((a, b) => isASC ? callback(b, a) : callback(a, b))
+        },
     }
     
 }
@@ -53,21 +62,24 @@ export default {
     padding: 10px 0;
     background: #313347;
 }
+.title-rank{
+    margin-left: 30px;
+    background: #313347;
+}
 .title-name{
-    width: 630px;
-    padding-left: 20px;
+    margin-left: 120px;
     background: #313347;
 }
 .title-rating{
-    width: 200px;
+    margin-left: 470px;
     background: #313347;
 }
 .title-wins{
-    width: 320px;
+    margin-left: 200px;
     background: #313347;
 }
 .title-losses{
-    width: 200px;
+    margin-left: 180px;
     background: #313347;
 }
 
@@ -81,6 +93,7 @@ export default {
 }
 .teams-rank{
     width: 100px;
+    margin-left: 20px;
     text-align: left;
 }
 .teams-name{
@@ -90,13 +103,16 @@ export default {
 }
 .teams-rating{
     width: 100px;
+    margin-left: 400px;
 }
 .teams-wins p{
-    width: 300px;
+    width: 200px;
+    margin-left: 100px;
     color: rgb(102, 187, 106);
 }
 .teams-losses p{
-    width: 300px;
+    width: 200px;
+    margin-left: 30px;
     color: rgb(255, 76, 76);
 }
 

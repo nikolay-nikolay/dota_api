@@ -15,7 +15,7 @@ export function useTeams() {
                 wins: data[i].wins,
                 losses: data[i].losses,
                 last_match_time: data[i].last_match_time,
-                name: data[i].name,
+                name: data[i].name || 'undefined',
                 logo_url: data[i].logo_url
             })
             
