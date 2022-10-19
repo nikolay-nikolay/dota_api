@@ -29,7 +29,6 @@
 <script>
 import navmatches from '@/components/NavMatches.vue'
 import {usePublickMatches} from "@/hooks/usePublickMatches"
-import {ref} from 'vue'
 export default {
     components: {
         navmatches
@@ -59,31 +58,6 @@ export default {
             element.id = isASC ? 'desc' : 'asc'
             this.matches.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
         },
-        computed: {
-        async fetchingHeroes (){
-            try {
-                const api_url = "https://api.opendota.com/api/heroStats"
-                const response = await fetch(api_url)
-                const data = await response.json()
-
-                for (let t = 0; t < data.length; t++){
-                    takeId.push({
-                        heroId: data[i].hero_id,
-                        img: data[i].img,
-                    })
-                }
-                
-                if (this.matches.id == this.Heroid) {
-                    console.log(this.matches.id)
-                    callback(this)
-                
-                }
-            
-            } catch (e){
-                console.log(e)
-            }
-    }
-        }
     }
     
 }

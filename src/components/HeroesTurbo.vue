@@ -80,16 +80,17 @@ export default {
   margin-bottom: 10px;
 }
 .title-hero{
-    width: 360px;
+    margin-left: 40px;
 }
 .title-pick{
-    width: 400px;
+    margin-left: 460px;
 }
 .title-win{
-    width: 500px;
+    margin-left: 280px;
 }
 .stats-name{
     width: 500px;
+    margin-left: 10px;
 }
 .stats-pick{
     width: 400px;
