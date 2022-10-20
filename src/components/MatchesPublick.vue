@@ -35,13 +35,12 @@ export default {
     },
     data(){
         return {
-            takeId: []
         }
     },
     setup(){
-        const {matches,durationFormat} = usePublickMatches()
+        const {matches,hero} = usePublickMatches()
         return{
-            matches,durationFormat
+            matches,hero
         }
     },
     methods: {
@@ -58,7 +57,21 @@ export default {
             element.id = isASC ? 'desc' : 'asc'
             this.matches.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
         },
-    }
+    },
+    // computed: {
+    //   getImage(radiantId,direId,heroId,icon){
+    //     radiantId = this.matches.radiant_team
+    //     console.log("lel",this.item.radiant_team)
+    //     direId = this.matches.dire_team
+    //     heroId = this.hero.heroId
+    //     icon = this.hero.icon
+    //     for (let i = 0; i < radiantId.length; i++){
+    //       if (heroId == radiantId[i]){
+    //         return icon
+    //       }
+    //     }
+    //   }
+    // }
     
 }
 </script>
