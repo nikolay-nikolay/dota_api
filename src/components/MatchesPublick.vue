@@ -60,7 +60,7 @@ export default {
     },
     // computed: {
     //   getImage(radiantId,direId,heroId,icon){
-    //     radiantId = this.matches.radiant_team
+    //     radiantId = this.matches.radiant_team.split(",")
     //     console.log("lel",this.item.radiant_team)
     //     direId = this.matches.dire_team
     //     heroId = this.hero.heroId
