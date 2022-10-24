@@ -17,10 +17,12 @@
                 <p>{{getFormattedDuration(item.duration)}}</p>
             </div>
             <div class="match-radiant">
-                <p>{{getImage}}</p>
+                <!-- <p>{{getHeroesImages(item.radiant_team)}}</p> -->
+                <img v-for="image in getHeroesImages(item.radiant_team)" :src="image" width="64" height="32">
             </div>
             <div class="match-dire">
-                <p>{{item.dire_team}}</p>
+                <!-- <p>{{item.dire_team}}</p> -->
+                <img v-for="image in getHeroesImages(item.dire_team)" :src="image" width="64" height="32">
             </div>
 
         </div>
@@ -60,6 +62,16 @@ export default {
             element.id = isASC ? 'desc' : 'asc'
             this.matches.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
         },
+        getHeroesImages(ids) {
+            let images = []
+
+            this.hero.forEach((hero) => {
+                if (ids.includes(hero.heroId + ''))
+                    images.push(hero.image)
+            })
+
+            return images
+        }
     },
     computed: {
       getImage : function (){
@@ -130,12 +142,14 @@ export default {
     width: 100px;
 }
 .match-radiant p{
-    width: 300px;
-    color: rgb(102, 187, 106);
+    /* width: 300px; */
+    /* color: rgb(102, 187, 106); */
 }
-.match-dire p{
-    width: 300px;
-    color: rgb(255, 76, 76);
+.match-dire{
+    /* width: 300px; */
+    /* color: rgb(255, 76, 76); */
+
+    margin-left: 1vw;
 }
 
 </style>

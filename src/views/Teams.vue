@@ -2,7 +2,7 @@
 
     <div class="teams-title">
         <p class="title-rank">RANK</p>
-        <p class="title-name">NAME</p>
+        <p class="title-name" @click="sortItems($event, (a, b) => a.name.localeCompare(b.name))">NAME</p>
         <p class="title-rating">RATING</p>
         <p class="title-wins">WINS</p>
         <p class="title-losses">LOSSES</p>
@@ -10,7 +10,7 @@
 
 
     <div class="teams-wrapper">
-        <div class="teams" v-for="item in teams.slice(0,100)" :key="item.id">
+        <div class="teams" v-for="item in teams" :key="item.id">
           <div class="teams-rank">
             <p>1st</p>
           </div>
@@ -45,7 +45,7 @@ export default {
             let isASC = element.id === 'asc'
 
             element.id = isASC ? 'desc' : 'asc'
-            this.teams.slice(0,100).sort((a, b) => isASC ? callback(b, a) : callback(a, b))
+            this.teams.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
         },
     }
     

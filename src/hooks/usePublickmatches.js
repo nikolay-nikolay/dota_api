@@ -14,17 +14,19 @@ export function usePublickMatches() {
 
           for (let i = 0; i < data.length; i++){
             matches.push({
-            id: data[i].match_id,
-            duration: data[i].duration,
-            radiant_team: data[i].radiant_team.split(","),
-            dire_team: data[i].dire_team,
-            radiant_win: data[i].radiant_win,
-            })
-            hero.push({
-              heroId: dataHero[i].id,
-              image: "https://api.opendota.com" + dataHero[i].img,
+                id: data[i].match_id,
+                duration: data[i].duration,
+                radiant_team: data[i].radiant_team.split(","),
+                dire_team: data[i].dire_team.split(','),
+                radiant_win: data[i].radiant_win,
             })
           }
+
+          for (let i = 0; i < dataHero.length; i++)
+            hero.push({
+                heroId: dataHero[i].id,
+                image: "https://api.opendota.com" + dataHero[i].img,
+            })
 
 
         } catch (e) {

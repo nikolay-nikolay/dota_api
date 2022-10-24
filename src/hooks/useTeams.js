@@ -8,7 +8,7 @@ export function useTeams() {
           const response = await fetch(api_url)
           const data = await response.json()
           
-          for (let i = 0; i < data.length; i++){
+          for (let i = 0; i < Math.min(data.length, 100); i++){
             teams.push({
                 team_id: data[i].team_id,
                 rating: data[i].rating,
