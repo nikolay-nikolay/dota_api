@@ -1,12 +1,12 @@
 <template>
-    <button @click="request">Click me</button>
+    <button @click="">Click me</button>
 </template>
 <script>
 import {usePostsJSON} from "@/hooks/usePostsJSON";
 
 export default {
     setup(){
-      const {request} = usePostsJSON()
+      const {} = usePostsJSON()
     }
 }
 </script>

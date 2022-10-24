@@ -17,7 +17,7 @@
                 <p>{{getFormattedDuration(item.duration)}}</p>
             </div>
             <div class="match-radiant">
-                <p>{{item.radiant_team}}</p>
+                <p>{{getImage}}</p>
             </div>
             <div class="match-dire">
                 <p>{{item.dire_team}}</p>
@@ -29,12 +29,15 @@
 <script>
 import navmatches from '@/components/NavMatches.vue'
 import {usePublickMatches} from "@/hooks/usePublickMatches"
+import {ref, reactive} from "vue";
+
 export default {
     components: {
         navmatches
     },
     data(){
         return {
+
         }
     },
     setup(){
@@ -58,20 +61,27 @@ export default {
             this.matches.sort((a, b) => isASC ? callback(b, a) : callback(a, b))
         },
     },
-    // computed: {
-    //   getImage(radiantId,direId,heroId,icon){
-    //     radiantId = this.matches.radiant_team.split(",")
-    //     console.log("lel",this.item.radiant_team)
-    //     direId = this.matches.dire_team
-    //     heroId = this.hero.heroId
-    //     icon = this.hero.icon
-    //     for (let i = 0; i < radiantId.length; i++){
-    //       if (heroId == radiantId[i]){
-    //         return icon
-    //       }
-    //     }
-    //   }
-    // }
+    computed: {
+      getImage : function (){
+        let a = []
+        for (let i = 0; i < this.matches.length; i++ ){
+            if ( this.matches[i].radiant_team[i] === this.hero[i].heroId) {
+              a.push({
+                lol : this.hero[i].image,
+
+              })
+              console.log("done",a)
+            } else {
+              console.log('error')
+            }
+        return a
+        }
+        console.log("lel",this.matches[0].radiant_team[0])
+        console.log('kok', this.hero[0].heroId)
+        console.log("mak", this.hero[0].image)
+
+      }
+    }
     
 }
 </script>

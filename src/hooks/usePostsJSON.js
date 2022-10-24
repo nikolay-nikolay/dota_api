@@ -1,17 +1,14 @@
 import {onMounted} from "vue";
 
 export function usePostsJSON() {
-    const requestURL = '@/hooks/post'
-    let request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send("@/hooks/post");
-    console.log("works", request)
-    request.onload = function() {
-        let data = request.response;
+    const fetching = async () => {
+    const api_url = "posts.json"
+    const response = await fetch(api_url)
+    const data = await response.json()
         console.log(data)
     }
+    onMounted(fetching)
     return {
-        request
+
     }
 }
