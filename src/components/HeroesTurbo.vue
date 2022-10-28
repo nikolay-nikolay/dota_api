@@ -17,13 +17,13 @@
             <div class="bar">
                 <div class="bar-process" :style="{width: (item.pick_turbo / totalPickTurbo * 1000).toFixed(2) + '%'}"></div>
             </div>
-        </div> 
+        </div>
         <div class="stats-pick">
             <p> {{item.winrate_turbo}} % </p>
             <div class="bar">
                 <div class="bar-process" :style="{width: item.winrate_turbo + '%'}"></div>
             </div>
-        </div> 
+        </div>
     </div>
 </template>
 <script>
@@ -66,7 +66,7 @@ export default {
 .stats-title{
   display: flex;
   text-align: center;
-  
+
   margin-top: 20px;
   padding: 12px 0;
 }

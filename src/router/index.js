@@ -10,6 +10,7 @@ import Forums from '@/views/Forums'
 import HeroesPublick from '@/components/HeroesPublick'
 import HeroesTurbo from '@/components/HeroesTurbo'
 import MatchesPublick from '@/components/MatchesPublick'
+import HeroStats from "@/components/HeroStats";
 
 
 
@@ -53,6 +54,11 @@ const routes = [
     {
         path: '/heroes/turbo',
         component: HeroesTurbo
+    },
+    {
+        path: '/heroes/:id',
+        name: 'heroes',
+        component: HeroStats
     },
    
   
