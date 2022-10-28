@@ -12,7 +12,7 @@
   <div class="stats-wrapper">
     <div class="stats" v-for="item in stats" :key="item.id" >
       <img :src="item.icon" alt="icon" class="icon">
-      <router-link :to="{name: 'hero', params: {id: item.id}}" class="stats-name">
+      <router-link :to="{name: 'heroes', params: {id: item.id}}" class="stats-name">
         {{item.name}}
       </router-link>
       <div class="stats-pick">

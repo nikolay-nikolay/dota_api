@@ -56,7 +56,7 @@ const routes = [
         component: HeroesTurbo
     },
     {
-        path: '/heroes/:id',
+        path: '/heroes/stats/:id',
         name: 'heroes',
         component: HeroStats
     },
