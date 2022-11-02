@@ -102,14 +102,20 @@ export default {
 }
 .match-duration{
     width: 100px;
+  align-self: center;
+}
+.match-radiant{
+  align-self: center;
 }
 .match-radiant p{
     width: 300px;
     color: rgb(102, 187, 106);
 }
+.match-dire{
+  align-self: center;
+}
 .match-dire p{
     width: 300px;
     color: rgb(255, 76, 76);
 }
-
 </style>

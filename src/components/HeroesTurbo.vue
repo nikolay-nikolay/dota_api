@@ -11,9 +11,9 @@
             {{item.name}}
         </div>
         <div class="stats-pick">
-            <div>
-                {{(item.pick_turbo / totalPickTurbo * 1000).toFixed(2)}}
-            </div>
+            <p>
+                {{(item.pick_turbo / totalPickTurbo * 1000).toFixed(2)}} %
+            </p>
             <div class="bar">
                 <div class="bar-process" :style="{width: (item.pick_turbo / totalPickTurbo * 1000).toFixed(2) + '%'}"></div>
             </div>
@@ -51,6 +51,9 @@ export default {
 }
 </script>
 <style scoped>
+a{
+  text-decoration: auto;
+}
 .bar{
   width: 120px;
   border: 1px solid black;
@@ -78,6 +81,7 @@ export default {
   align-items: center;
   border: 1px solid rgb(56, 56, 75);
   margin-bottom: 10px;
+  padding: 5px;
 }
 .title-hero{
     margin-left: 40px;
@@ -94,8 +98,9 @@ export default {
 }
 .stats-pick{
     width: 400px;
+
 }
 .stats-pick p{
-    margin-left: 60px;
+    margin-left: 40px;
 }
 </style>

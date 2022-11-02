@@ -143,6 +143,7 @@ export default {
   align-items: center;
   border: 1px solid rgb(56, 56, 75);
   margin-bottom: 10px;
+  padding: 5px 0 5px 5px;
 }
 .stats-name{
   border: none;
@@ -153,45 +154,17 @@ p{
   text-align: center;
   font-size: 16px;
 }
-.title-pick{
-    display: flex;
-    width: 150px;
-    margin-right: 30px;
-    text-align: center;
 
-}
 .stats-pick{
   width: 100px;
   margin-right: 100px;
 }
 
-.title-win{
-  width: 150px;
-  margin-right: 30px;
-  text-align: center;
-}
-.title-win:last-of-type{
-    margin-right: 0;
-}
-.stats-ban{
-  width: 100px;
-}
-.stats-winrate{
-  width: 100px;
-}
-.progress{
-  margin-bottom: 6px;
-  width: 100px;
-}
+
+
 .icon{
   width: 40px;
   height: auto;
 }
-.progress {
-  background-color: #f3f3f3;
-  border: 0;
-  margin-top: 0px;
-  height: 6px;
-  border-radius: 9px;
-}
+
 </style>

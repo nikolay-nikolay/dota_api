@@ -106,8 +106,10 @@ export default {
   align-items: center;
   border: 1px solid rgb(56, 56, 75);
   margin-bottom: 10px;
+  padding: 5px;
 }
 .stats-name{
+  text-decoration: auto;
   border: none;
   width: 350px;
   margin-left: 10px;

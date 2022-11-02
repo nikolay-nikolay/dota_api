@@ -94,21 +94,30 @@ export default {
 .teams-rank{
     width: 100px;
     margin-left: 20px;
+    align-self: center;
     text-align: left;
 }
 .teams-name{
     color: rgb(228, 228, 228);
     font-size: 12px;
     width: 150px;
+    align-self: center;
 }
 .teams-rating{
     width: 100px;
     margin-left: 400px;
+  align-self: center;
+}
+.teams-wins{
+  align-self: center;
 }
 .teams-wins p{
     width: 200px;
     margin-left: 100px;
     color: rgb(102, 187, 106);
+}
+.teams-losses{
+  align-self: center;
 }
 .teams-losses p{
     width: 200px;

@@ -105,20 +105,19 @@ export default {
     background: #313347;
 }
 .title-id{
-    width: 630px;
     padding-left: 20px;
     background: #313347;
 }
 .title-duration{
-    width: 200px;
+  margin-left: 565px;
     background: #313347;
 }
 .title-radiant{
-    width: 320px;
+  margin-left: 160px;
     background: #313347;
 }
 .title-dire{
-    width: 200px;
+  margin-left: 260px;
     background: #313347;
 }
 
@@ -131,24 +130,26 @@ export default {
     margin-bottom: 10px;
 }
 .match-id{
-    width: 600px;
+    width: 570px;
     text-align: left;
+    align-self: center;
 }
 .match-league{
     color: rgb(228, 228, 228);
     font-size: 12px;
 }
 .match-duration{
+  align-self: center;
     width: 100px;
 }
-.match-radiant p{
+.match-radiant {
     /* width: 300px; */
     /* color: rgb(102, 187, 106); */
+  margin-left: 30px;
 }
 .match-dire{
     /* width: 300px; */
     /* color: rgb(255, 76, 76); */
-
     margin-left: 1vw;
 }
 
