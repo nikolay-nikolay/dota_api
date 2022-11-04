@@ -29,11 +29,12 @@
 
       </div>
 
-<!--      <div>-->
-<!--        <div v-for="talant in skills.talants"></div>-->
-<!--      </div>-->
 
     </div>
+  </div >
+  {{rank}}
+  <div>
+
   </div>
 </template>
 
@@ -65,7 +66,8 @@ setup(){
       int_gain: '',
       loc_name: '',
       skills: {},
-      skills_url: {}
+      skills_url: {},
+      rank: [],
     }
   },
   methods: {
@@ -111,11 +113,21 @@ setup(){
       this.skills.forEach(skill => {
         this.skill_imgs.push(`https://api.opendota.com/apps/dota2/images/dota_react/abilities/${skill}.png`)
       })
+    },
+
+    async getRankings(id){
+      const api_url = `https://api.opendota.com/api/rankings?hero_id=1`
+      const response = await fetch(api_url)
+      const rankings = await response.json()
+      console.log(id)
+      this.rank = rankings['rankings'].score
+      console.log(this.rank)
     }
   },
   mounted() {
     this.getHero(this.route.params.id)
     this.getAbilities(this.route.params.id)
+    this.getRankings(this.route.params.id)
   }
 
 }

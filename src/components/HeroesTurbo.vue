@@ -94,7 +94,7 @@ a{
 }
 .stats-name{
     width: 500px;
-    margin-left: 10px;
+margin-left: 10px;
 }
 .stats-pick{
     width: 400px;
